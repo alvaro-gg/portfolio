@@ -1,43 +1,44 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import Navbar from "@/app/components/Navbar";
 import "./globals.css";
-import { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Álvaro García — Web Developer",
-  description: "Portfolio de Álvaro García. Proyectos, contacto y habilidades.",
+  title: "Álvaro García — Full-Stack Developer",
+  description:
+    "Portfolio de Álvaro García. Desarrollador full-stack especializado en React, TypeScript y Node.js.",
 };
 
-type LayoutProps = { readonly children: ReactNode };
+type LayoutProps = {
+  readonly children: ReactNode;
+};
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <html lang="es" className="font-sans">
-      <body className="min-h-screen flex flex-col bg-primary text-strong">
+    <html lang="es">
+      <body className="min-h-screen">
         <a
-          href="#content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 bg-dark text-light px-3 py-2 rounded-md"
+          href="#hero"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-3 focus:py-2 focus:rounded-md focus:text-sm focus:bg-indigo-500 focus:text-white"
         >
           Saltar al contenido
         </a>
 
-        <header className="bg-dark text-light">
-          <div className="mx-auto w-full max-w-5xl px-4 py-4 md:py-5">
-            <h1 className="text-2xl font-bold text-center">
-              Álvaro García - Web Developer
-            </h1>
-          </div>
-        </header>
+        <Navbar />
 
-        <main id="content" className="flex-1">
-          <div className="mx-auto w-full max-w-5xl px-4 py-6 md:py-10">
-            {children}
-          </div>
-        </main>
+        <main>{children}</main>
 
-        <footer className="bg-dark text-light">
-          <div className="mx-auto w-full max-w-5xl px-4 py-4 text-center">
-            © {new Date().getFullYear()} Álvaro García
-          </div>
+        <footer
+          style={{
+            borderTop: "1px solid var(--color-border)",
+            padding: "1.5rem",
+            textAlign: "center",
+            fontSize: "0.8rem",
+            color: "var(--color-muted)",
+            fontFamily: "var(--font-mono)",
+          }}
+        >
+          © {new Date().getFullYear()} Álvaro García · Hecho con Next.js
         </footer>
       </body>
     </html>

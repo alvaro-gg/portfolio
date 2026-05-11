@@ -1,0 +1,52 @@
+import CodePreview from "./CodePreview";
+import Tag from "./Tag";
+
+export default function HeroSection() {
+  return (
+    <section id="hero" className="hero-section">
+      <div className="hero-grid">
+        <div className="hero-content">
+          <div className="hero-status animate-fade-up">
+            <span className="hero-status-dot" />
+            <span>Disponible para trabajar</span>
+          </div>
+
+          <h1 className="hero-title animate-fade-up delay-1">Álvaro García</h1>
+
+          <h2 className="hero-subtitle animate-fade-up delay-2">
+            Full-Stack Developer
+          </h2>
+
+          <p className="hero-description animate-fade-up delay-3">
+            Construyo productos web completos, desde la base de datos hasta la
+            interfaz. Me enfoco en código limpio, buenas prácticas y
+            experiencias de usuario que funcionan de verdad.
+          </p>
+
+          <div className="hero-tags animate-fade-up delay-4">
+            <Tag>React</Tag>
+            <Tag>TypeScript</Tag>
+            <Tag>Node.js</Tag>
+            <Tag>PostgreSQL</Tag>
+          </div>
+
+          <div className="hero-actions animate-fade-up delay-4">
+            <a href="#projects" className="hero-primary-link">
+              Ver proyectos
+            </a>
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-secondary-link"
+            >
+              Descargar CV
+            </a>
+          </div>
+        </div>
+
+        <CodePreview />
+      </div>
+    </section>
+  );
+}
