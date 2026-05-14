@@ -1,8 +1,17 @@
+"use client";
+
+import { useLang } from "@/app/context/LanguageContext";
+import { i18n } from "@/app/data/i18n";
 import { PROJECTS } from "../data/portfolio";
 import SectionLabel from "./SectionLabel";
 import Tag from "./Tag";
 
 export default function ProjectsSection() {
+  const { lang } = useLang();
+  const t = i18n[lang].projects;
+
+  const projects = PROJECTS[lang];
+
   return (
     <section
       id="projects"
@@ -13,7 +22,7 @@ export default function ProjectsSection() {
         borderTop: "1px solid var(--color-border)",
       }}
     >
-      <SectionLabel>Proyectos</SectionLabel>
+      <SectionLabel>{t.label}</SectionLabel>
 
       <h2
         style={{
@@ -24,7 +33,7 @@ export default function ProjectsSection() {
           color: "var(--color-text)",
         }}
       >
-        Lo que he construido
+        {t.title}
       </h2>
 
       <div
@@ -34,7 +43,7 @@ export default function ProjectsSection() {
           gap: "1.5rem",
         }}
       >
-        {PROJECTS.map((project) => (
+        {projects.map((project) => (
           <article
             key={project.title}
             style={{
@@ -101,7 +110,7 @@ export default function ProjectsSection() {
                   fontWeight: 500,
                 }}
               >
-                Ver aplicación ↗
+                {t.viewApp}
               </a>
             </div>
 
@@ -145,6 +154,7 @@ export default function ProjectsSection() {
                   >
                     ✦
                   </span>
+
                   {highlight}
                 </li>
               ))}
@@ -188,11 +198,16 @@ export default function ProjectsSection() {
               whiteSpace: "nowrap",
             }}
           >
-            en desarrollo
+            {t.wip}
           </span>
 
-          <span style={{ fontSize: "0.9rem", color: "var(--color-muted)" }}>
-            Autoplanify — Próximamente
+          <span
+            style={{
+              fontSize: "0.9rem",
+              color: "var(--color-muted)",
+            }}
+          >
+            {t.autoplanify}
           </span>
         </div>
       </div>

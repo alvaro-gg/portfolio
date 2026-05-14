@@ -1,7 +1,16 @@
+"use client";
+
+import { useLang } from "@/app/context/LanguageContext";
+import { i18n } from "@/app/data/i18n";
 import { SKILLS } from "../data/portfolio";
 import SectionLabel from "./SectionLabel";
 
 export default function SkillsSection() {
+  const { lang } = useLang();
+  const t = i18n[lang].skills;
+
+  const skills = SKILLS[lang];
+
   return (
     <section
       id="skills"
@@ -12,7 +21,7 @@ export default function SkillsSection() {
         borderTop: "1px solid var(--color-border)",
       }}
     >
-      <SectionLabel>Stack</SectionLabel>
+      <SectionLabel>{t.label}</SectionLabel>
 
       <h2
         style={{
@@ -23,7 +32,7 @@ export default function SkillsSection() {
           color: "var(--color-text)",
         }}
       >
-        Habilidades técnicas
+        {t.title}
       </h2>
 
       <div
@@ -33,7 +42,7 @@ export default function SkillsSection() {
           gap: "1rem",
         }}
       >
-        {SKILLS.map((skill) => (
+        {skills.map((skill) => (
           <div
             key={skill.category}
             style={{
@@ -57,13 +66,7 @@ export default function SkillsSection() {
               {skill.category}
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "7px",
-              }}
-            >
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "7px" }}>
               {skill.items.map((item) => (
                 <span
                   key={item}

@@ -1,8 +1,17 @@
+"use client";
+
+import { useLang } from "@/app/context/LanguageContext";
+import { i18n } from "@/app/data/i18n";
 import { CONTACT } from "../data/portfolio";
 import ContactIcon from "./ContactIcon";
 import SectionLabel from "./SectionLabel";
 
 export default function ContactSection() {
+  const { lang } = useLang();
+  const t = i18n[lang].contact;
+
+  const contacts = CONTACT[lang];
+
   return (
     <section
       id="contact"
@@ -13,7 +22,7 @@ export default function ContactSection() {
         borderTop: "1px solid var(--color-border)",
       }}
     >
-      <SectionLabel>Contacto</SectionLabel>
+      <SectionLabel>{t.label}</SectionLabel>
 
       <h2
         style={{
@@ -24,7 +33,7 @@ export default function ContactSection() {
           marginBottom: "0.75rem",
         }}
       >
-        ¿Hablamos?
+        {t.title}
       </h2>
 
       <p
@@ -36,8 +45,7 @@ export default function ContactSection() {
           lineHeight: 1.75,
         }}
       >
-        Estoy buscando mi primera oportunidad profesional. Si tienes un proyecto
-        interesante o una vacante, me encantaría escucharte.
+        {t.description}
       </p>
 
       <div
@@ -47,7 +55,7 @@ export default function ContactSection() {
           gap: "0.85rem",
         }}
       >
-        {CONTACT.map(({ label, href, icon }) => (
+        {contacts.map(({ label, href, icon }) => (
           <a
             key={label}
             href={href}

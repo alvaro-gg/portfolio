@@ -1,37 +1,35 @@
+"use client";
+
+import { useLang } from "@/app/context/LanguageContext";
+import { i18n } from "@/app/data/i18n";
 import AvatarImage from "./AvatarImage";
 import SectionLabel from "./SectionLabel";
 
 export default function AboutSection() {
+  const { lang } = useLang();
+  const t = i18n[lang].about;
+
   return (
     <section id="about" className="about-section">
-      <SectionLabel>Sobre mí</SectionLabel>
-
+      <SectionLabel>{t.label}</SectionLabel>
       <div className="about-grid">
         <div className="about-content">
-          <h2 className="about-title">Hola, soy Álvaro</h2>
+          <h2 className="about-title">{t.title}</h2>
+
+          <p className="about-text">{t.p1}</p>
 
           <p className="about-text">
-            {
-              "Estoy dando mis primeros pasos como desarrollador con muchas ganas de aprender y crecer dentro de un equipo. Me gusta escribir código "
-            }
-            <strong>claro y ordenado</strong>
-            {
-              ", y cuidar cada detalle de las interfaces para que sean agradables de usar."
-            }
+            {t.p2_pre}
+            <strong className="about-highlight">Autoplanify</strong>
+            {t.p2_mid}
+            <strong className="about-highlight">AutoGym</strong>
+            {t.p2_post}
           </p>
 
           <p className="about-text">
-            He trabajado en proyectos personales y en prácticas de empresa, lo
-            que me ha ayudado a afianzar lo que sé y a descubrir nuevas formas
-            de resolver problemas.
-          </p>
-
-          <p className="about-text">
-            {"Me interesa especialmente el desarrollo "}
-            <strong className="about-highlight">full-stack</strong>
-            {
-              " con React y TypeScript. Valoro la comunicación sencilla, el trabajo colaborativo y ver cómo un proyecto evoluciona hasta convertirse en algo útil y bien hecho."
-            }
+            {t.p3_pre}
+            <strong>{t.p3_highlight}</strong>
+            {t.p3_post}
           </p>
         </div>
 
