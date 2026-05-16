@@ -3,6 +3,7 @@
 import { useLang } from "@/app/context/LanguageContext";
 import { i18n } from "@/app/data/i18n";
 import CodePreview from "./CodePreview";
+import DownloadCvButton from "./DownloadCvButton";
 import Tag from "./Tag";
 
 export default function HeroSection() {
@@ -39,14 +40,8 @@ export default function HeroSection() {
             <a href="#projects" className="hero-primary-link">
               {t.cta}
             </a>
-            <a
-              href="/cv.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-secondary-link"
-            >
-              {t.cv}
-            </a>
+
+            <DownloadCvButton />
           </div>
         </div>
 
